@@ -1,0 +1,56 @@
+<!-- 倒计时 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NetCTOSS</title>
+    <style>
+        body {
+            background-image: url("img/error.png");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            font-family: 华文楷体;
+            font-size: 20px;
+        }
+        #error div {
+/*            border: 1px solid red;*/
+            color: white;
+            margin-top: 600px;
+            margin-left: 375px;
+        }
+        #second {
+            color: yellow;
+        }
+        a {
+            color: yellow;
+        }
+    </style>
+    <script>
+        // 加载函数
+        onload = function() {
+            // 定时器
+            timer = setInterval("changeSecond()",1000);
+        }
+        // 倒计时 到0时页面跳转
+        function changeSecond() {
+            var second = document.getElementById("second").innerText -= 1;
+            if (second == 0) {
+                open("http://www.baidu.com");
+                close();
+            }
+        }
+        // 关闭定时器
+        function stopSecond() {
+            clearInterval(timer);
+        }
+    </script>
+</head>
+<body id="error">
+    <div>
+        <span>遇到错误，</span>
+        <span id="second">5</span>
+        <span>秒后将自动跳转，立即跳转请点击</span>
+        <span><a id="a" href="http://www.baidu.com" target="_blank" onclick="stopSecond()">返回</a></span>
+    </div>
+</body>
+</html>

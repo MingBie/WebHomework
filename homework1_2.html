@@ -1,0 +1,45 @@
+<!-- 双色球 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双色球</title>
+    <script>
+        function f() {
+            var arr = []; // 用来存储 双色球
+            // 依次 随机生成红球（0-33）
+            for(var i = 0; i < 6; i++) {
+                arr[i] = Math.floor((Math.random() * 34));
+                for(var j = 0; j < i; j++) {
+                    // 若重复重新生成
+                    if (arr[i] == arr[j]) {
+                        i--;
+                        break;
+                    }
+                }
+            }
+            // 将红球排序
+            arr.sort(sortNumber);
+            // 拼接输出的结果
+            var a = "";
+            for(var i = 0; i < arr.length; i++) {
+                a += arr[i];
+                if (i != arr.length - 1) {
+                    a += ",";
+                }
+            }
+            // 随机生成一个蓝球（0-16）
+            arr[6] = Math.floor((Math.random() * 17));
+            a += "|" + arr[6];
+            alert(a);
+        }
+        // 排序函数
+        function sortNumber(a, b) {
+            return a - b;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="f()">机选</button>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- 统计字符个数 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计字符个数</title>
+    <style>
+        span {
+            font-size: 30px;
+            font-family: 华文楷体;
+        }
+        input {
+            width: 200px;
+            height: 25px;
+            margin-top: 20px;
+        }
+        button {
+            width: 60px;
+            height: 30px;
+            margin-left: 20px;
+        }
+    </style>
+    <script>
+        function count() {
+            var text = document.getElementById("text").value;
+            var arr = {}; // 用作集合
+            var a = []; // 用来存储最后输出的结果
+            for(var i = 0; i < text.length; i++) {
+                r = text.charAt(i); // 转化成单个字符
+                // 判断是否已经存在 集合中
+                // 若已存在 +1
+                // 若不存在 为1
+                console.log(arr[r]);
+                if (arr[r]) {
+                    arr[r]++;
+                } else {
+                    arr[r] = 1;
+                }
+            }
+            // 存入数组中
+            var obj;
+            var j = 0;
+            for(obj in arr) {
+                a[j++] = obj + "," +arr[obj];
+            }
+            alert(a);
+        }
+    </script>
+</head>
+<body>
+    <span>1.&nbsp;统计文本框中录入的各字符的个数</span><br/>
+    <input id="text" type="text"/>
+    <button onclick="count()">确定</button>
+</body>
+</html>

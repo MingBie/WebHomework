@@ -1,0 +1,37 @@
+<!-- 百元买百鸡 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百钱买百鸡</title>
+    <style>
+        div {
+            font-size: 30px;
+        }
+        button {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function f() {
+            var s = ""; // 用来存储输出的结果
+            // 依次判断 方案
+            for(var i = 0; i <= 20; i++) {
+                for(var j = 0; j <= 33; j++) {
+                    for(var k = 0; k <= 100; k++) {
+                        // 判断 金钱和数量是不是同时等于100
+                        if ((i+j+k*3)==100 && (5*i+3*j+k)==100) {
+                                s += "公鸡: " + i + ",母鸡: " + j + ",小鸡: " + 3*k + "\n";
+                        }
+                    }
+                }
+            }
+            alert(s);
+        }
+    </script>
+</head>
+<body>
+    <div>1.&nbsp;"百钱买百鸡"</div>
+    <button onclick="f()">百钱买百鸡</button>
+</body>
+</html>

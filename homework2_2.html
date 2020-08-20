@@ -1,0 +1,121 @@
+<!-- 轮播图 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>广告轮播</title>
+    <style>
+        #body {
+/*            border: 1px solid red;*/
+            margin-left: 540px;
+            margin-top: 145px;
+        }
+        #id {
+            margin-left: -40px;
+            margin-top: 20px;
+        }
+        .id {
+/*            border: 1px solid red;*/
+            width: 70px;
+            height: 70px;
+            float: left;
+            text-align: center;
+            padding-top: 25px;
+            margin-left: 20px;
+            box-sizing: border-box;
+            background-color: gainsboro;
+        }
+    </style>
+    <script>
+        // 加载函数
+        onload = function () {
+            startImg();
+            var divs = document.getElementsByClassName("id");
+            for(var i = 0; i < divs.length; i++) {
+                // 停止轮播（鼠标移到元素上时）
+                // 并修改元素背景颜色
+                divs[i].onmouseover = function () {
+                    stopchangeImg();
+                    index = this.innerText - 1;
+                    img = document.getElementById("img");
+                    img.src = imgs[index];
+                    this.setAttribute("color",this.style.backgroundColor); // 记录当前背景颜色
+                    this.style.backgroundColor = "red";
+                }
+                // 重新开始轮播（鼠标移出元素时）
+                // 并恢复元素背景颜色
+                divs[i].onmouseout = function() {
+                    startImg();
+                    var color = this.getAttribute("color"); // 获得记录的当前背景颜色
+                    this.style.backgroundColor = color;
+                }
+            }
+        }
+        // 开始轮播
+        function startImg() {
+            // 定时器
+            timer = setInterval("changeImg()",1000);
+        }
+        var imgs = new Array("img/rose.jpg","img/daffodil.jpg","img/apple.jpg","img/daisy.jpg");
+        var index = 0;
+        // 轮播图片
+        function changeImg() {
+            index ++;
+            if (index > 3) {
+                index = 0;
+            }
+            img = document.getElementById("img");
+            img.src = imgs[index];
+        }
+        // 停止轮播 关闭定时器
+        function stopchangeImg() {
+            clearInterval(timer);
+        }
+/*        // 四个停止方法（鼠标移到元素上时）
+        function stopIndexImg1() {
+            stopchangeImg();
+            div = document.getElementById("one");
+            stop();
+        }
+        function stopIndexImg2() {
+            stopchangeImg();
+            div = document.getElementById("two");
+            stop();
+        }
+        function stopIndexImg3() {
+            stopchangeImg();
+            div = document.getElementById("three");
+            stop();
+        }
+        function stopIndexImg4() {
+            stopchangeImg();
+            div = document.getElementById("four");
+            stop();
+        }
+        // 切换到对应元素的图片 并改变元素背景颜色
+        function stop() {
+            index = this.innerText - 1;
+            img = document.getElementById("img");
+            img.src = imgs[index];
+            this.style.backgroundColor = "red";
+        }
+        // 重新开始轮播（鼠标移出元素时）
+        // 并恢复元素背景颜色
+        function startImg1() {
+            startImg();
+            div.style.backgroundColor = "gainsboro";
+        }*/
+    </script>
+</head>
+<body>
+    <div id="body">
+        <div><img id="img" src="img/rose.jpg" onmouseover="stopchangeImg()" onmouseout="startImg()"/></div>
+        <div id="id">
+            <div class="id">1</div>
+            <div class="id">2</div>
+            <div class="id">3</div>
+            <div class="id">4</div>
+        </div>
+    </div>
+</body>
+</html>
